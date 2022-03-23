@@ -1,0 +1,982 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  background: #faf9fb;
+  overflow-x: hidden;
+}
+
+.App::-webkit-scrollbar {
+  display: none;
+}
+
+/* Header Styles Starts */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 15px;
+  height: 60px;
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.logo-container .text {
+  padding: 0.5rem;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 35px;
+  color: rgb(241, 99, 74);
+  border-radius: 50%;
+  background: #fff;
+}
+
+.logo {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: rgb(241, 99, 74);
+  text-align: center;
+  line-height: 35px;
+  color: #fff;
+  padding: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 2.5rem;
+  z-index: -10;
+}
+
+.inputBox {
+  background: #fff;
+  border-radius: 25px;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  margin-left: 3rem;
+  overflow: hidden;
+  padding: 8px 15px;
+  width: 120px;
+}
+
+.inputBox .searchIcon {
+  color: #787a84;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.inputBox input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #787a84;
+  padding: 0 0.5rem;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.shoppingCart {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.shoppingCart .cart {
+  font-size: 30px;
+  color: #373848;
+  cursor: pointer;
+}
+
+.shoppingCart .cart_content {
+  width: 20px;
+  height: 20px;
+  background: rgb(241, 99, 74);
+  border-radius: 100%;
+  min-width: 20px;
+  min-height: 20px;
+  text-align: center;
+  position: absolute;
+  top: -8px;
+  right: 0;
+}
+
+.shoppingCart .cart_content p {
+  font-size: 14px;
+  font-weight: 500;
+  color: #faf9fb;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profileContainer .imgBox {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 100vw;
+  background: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profileContainer .userName {
+  font-size: 16px;
+  margin-left: 8px;
+  font-weight: 500;
+  display: none;
+}
+
+.toggleMenu .toggleIcon {
+  transform: rotate(90deg);
+  font-size: 30px;
+  color: #373848;
+  cursor: pointer;
+}
+
+/* Header Styles Ends */
+
+/* Bottom Menu Styles */
+.bottomMenu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  background: #d5d5d5;
+  border-radius: 25px 25px 0 0;
+  z-index: 101;
+}
+
+.bottomMenu ul {
+  display: flex;
+}
+
+.bottomMenu ul li {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  z-index: 1;
+}
+
+.bottomMenu ul li a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  text-align: center;
+  font-weight: 500;
+}
+
+.bottomMenu ul li a .icon {
+  position: relative;
+  display: block;
+  line-height: 70px;
+  text-align: center;
+  transition: 0.5s;
+}
+
+.bottomMenu ul li a .icon .MuiSvgIcon-root {
+  font-size: 26px;
+  color: #373848;
+}
+
+.bottomMenu ul li.active a .icon {
+  transform: translateY(-26px);
+}
+
+.bottomMenu ul li.active a .icon .MuiSvgIcon-root {
+  color: #faf9fb;
+  transition: 0.5s;
+}
+
+.indicator {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  background: rgb(241, 99, 74);
+  border-radius: 100vw;
+  top: -50%;
+  border: 6px solid #faf9fb;
+  transition: 0.5s;
+}
+
+.indicator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  width: 18px;
+  height: 18px;
+  background: transparent;
+  border-top-right-radius: 18px;
+  box-shadow: 0px -10px 0 0 #faf9fb;
+}
+.indicator::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  width: 18px;
+  height: 18px;
+  background: transparent;
+  border-top-left-radius: 18px;
+  box-shadow: 0px -10px 0 0 #faf9fb;
+}
+
+.bottomMenu ul li:nth-child(1).active ~ .indicator {
+  transform: translateX(calc(60px * 0));
+}
+.bottomMenu ul li:nth-child(2).active ~ .indicator {
+  transform: translateX(calc(60px * 1));
+}
+.bottomMenu ul li:nth-child(3).active ~ .indicator {
+  transform: translateX(calc(60px * 2));
+}
+.bottomMenu ul li:nth-child(4).active ~ .indicator {
+  transform: translateX(calc(60px * 3));
+}
+.bottomMenu ul li:nth-child(5).active ~ .indicator {
+  transform: translateX(calc(60px * 4));
+}
+.bottomMenu ul li:nth-child(6).active ~ .indicator {
+  transform: translateX(calc(60px * 5));
+}
+
+/* Main Sections Styles */
+
+main {
+  width: 100%;
+  height: auto;
+  margin-top: 60px;
+}
+
+.mainContainer {
+  width: 100%;
+  /* height: auto; */
+  background: #faf9fb;
+  padding: 10px;
+  padding-bottom: 100px;
+}
+
+.banner {
+  width: 100%;
+  height: 130px;
+  border-radius: 10px;
+  background: url("https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fbanner.png?alt=media&token=7e244d84-8821-477d-b273-4c9381a474fb")
+    no-repeat center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.deliveryPic {
+  position: absolute;
+  right: -60px;
+  bottom: -10px;
+  width: 240px;
+  object-fit: contain;
+}
+
+.bannerContent {
+  padding: 8px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.bannerContent h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2a2b3c;
+}
+
+.bannerContent p {
+  font-size: 15px;
+  width: 200px;
+  color: #989594;
+}
+
+.bannerContent p span {
+  color: rgb(241, 99, 74);
+  font-weight: 600;
+}
+
+.bannerContent a {
+  background: rgb(241, 99, 74);
+  padding: 5px 15px;
+  border-radius: 100vw;
+  color: #faf9fb;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.bannerContent a:hover {
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+  transition: 0.5s;
+}
+
+/* Dish Container */
+
+.dishContainer {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.menuCard {
+  width: 100%;
+}
+
+.subMenuContainer,
+.viewAll {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subMenuContainer h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2a2b3c;
+}
+
+.subMenuContainer .viewAll p {
+  font-size: 12px;
+  color: rgb(241, 99, 74);
+  font-weight: 400;
+  padding: 0 0.5rem;
+}
+
+.subMenuContainer .viewAll i {
+  background: rgb(241, 99, 74);
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.subMenuContainer .viewAll i .MuiSvgIcon-root {
+  font-size: 16px;
+  color: #faf9fb;
+}
+
+/* Menu Card */
+
+.rowContainer {
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+.rowContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.rowMenuCard {
+  width: 80px;
+  min-width: 80px;
+  height: 100px;
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transform: 0.5s;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+.rowMenuCard.active {
+  background: rgb(241, 99, 74);
+  color: #faf9fb;
+}
+
+.rowMenuCard .imgBox {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 100vw;
+  background: rgb(241, 99, 74);
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.rowMenuCard.active .imgBox {
+  background: #faf9fb;
+}
+
+.rowMenuCard .imgBox img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.rowMenuCard h3 {
+  color: rgb(241, 99, 74);
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.rowMenuCard.active h3 {
+  color: #faf9fb;
+}
+
+.rowMenuCard .loadMenu {
+  background: rgb(241, 99, 74);
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rowMenuCard.active .loadMenu {
+  background: #faf9fb;
+}
+
+.rowContainer .loadMenu .MuiSvgIcon-root {
+  font-size: 16px;
+  color: #faf9fb;
+}
+
+.rowMenuCard.active .loadMenu .MuiSvgIcon-root {
+  color: rgb(241, 99, 74);
+}
+
+/* Dish Menu */
+
+.dishItemContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.itemCard {
+  width: 160px;
+  height: 180px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.isFavourite {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  transition: 0.5s;
+}
+
+.isFavourite .MuiSvgIcon-root {
+  font-size: 18px;
+  color: rgb(245, 42, 7);
+}
+
+.isFavourite.active .MuiSvgIcon-root {
+  color: rgb(245, 42, 7);
+  filter: drop-shadow(0px 0px 8px rgb(245, 42, 7));
+}
+
+.itemCard .imgBox {
+  width: 100px;
+  height: 100px;
+  border-radius: 100vw;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -10px;
+}
+
+.itemCard .imgBox img {
+  object-fit: contain;
+}
+
+.itemImg {
+  position: absolute;
+  top: 0;
+  /* width: 60%; */
+}
+
+.itemContent {
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 10px;
+  padding-top: 50px;
+  width: 100%;
+}
+
+.itemContent .itemName {
+  font-size: 16px;
+}
+
+.itemContent .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.itemCard .bottom .rating .MuiSvgIcon-root {
+  font-size: 16px;
+}
+
+.orange {
+  color: rgb(241, 99, 74) !important;
+}
+
+.gray {
+  color: #373848 !important;
+}
+
+.itemContent .bottom .price {
+  font-size: 16px;
+}
+
+.itemContent .bottom .price span {
+  color: rgb(241, 99, 74);
+  font-size: 12px;
+  padding-right: 0.2rem;
+}
+
+.itemContent .addToCart {
+  background: rgb(241, 99, 74);
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.itemContent .addToCart .MuiSvgIcon-root {
+  color: #faf9fb;
+  font-size: 16px;
+}
+
+/* Right Menu Styles */
+.rightMenu {
+  width: 350px;
+  height: calc(100% - 60px);
+  background: #faf9fb;
+  position: fixed;
+  right: 0;
+  top: 60px;
+  z-index: 105;
+  transform: translateX(200%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 10px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+}
+
+.rightMenu.active {
+  transform: translateX(0);
+}
+
+.debitCardContainer {
+  padding: 10px;
+  width: 100%;
+}
+
+.debitCard {
+  position: relative;
+  width: 100%;
+  height: 170px;
+  min-width: 300px;
+  min-height: 170px;
+  border-radius: 15px;
+}
+
+.debitCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(241, 99, 74);
+  transform: rotate(5deg);
+  border-radius: 15px;
+  filter: blur(2px);
+  z-index: -2;
+}
+
+.debitCard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    35deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.1)
+  );
+  backdrop-filter: blur(10px);
+  z-index: -1;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 15px;
+}
+
+.cardGroup {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.card_logo,
+.card_chip,
+.card_name,
+.card_number,
+.card_from,
+.card_to,
+.card_ring {
+  position: absolute;
+}
+
+.card_logo {
+  width: 60px;
+  top: 30px;
+  right: 30px;
+  height: auto;
+}
+
+.card_chip {
+  width: 40px;
+  top: 40px;
+  left: 30px;
+  height: auto;
+}
+
+.card_number,
+.card_from,
+.card_to,
+.card_name {
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.card_number {
+  left: 30px;
+  bottom: 60px;
+}
+.card_name {
+  font-size: 12px;
+  bottom: 30px;
+  left: 30px;
+}
+
+.card_from {
+  font-size: 12px;
+  bottom: 30px;
+  right: 90px;
+}
+
+.card_to {
+  font-size: 12px;
+  bottom: 30px;
+  right: 30px;
+}
+
+.card_ring {
+  height: 400px;
+  width: 400px;
+  border-radius: 100vw;
+  background: transparent;
+  border: 50px solid rgba(0, 0, 0, 0.1);
+  top: -250px;
+  right: -250px;
+  box-sizing: border-box;
+}
+
+.card_ring::after {
+  content: "";
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  border-radius: 100vw;
+  background: transparent;
+  border: 50px solid rgba(0, 0, 0, 0.1);
+  top: 185px;
+  right: -155px;
+  box-sizing: border-box;
+}
+
+/* cart Style */
+
+.cartCheckOutContainer {
+  width: 100%;
+  min-width: 320px;
+}
+
+.cartContainer {
+  width: 100%;
+  height: 220px;
+  max-height: 250px;
+  margin-top: 10px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.cartContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.cardItem {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.cardItem .imgBox {
+  width: 60px;
+  min-width: 60px;
+  height: 60px;
+  min-height: 60px;
+  background: #00ffc855;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.cardItem .imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cardItem .itemSection {
+  margin-left: 10px;
+}
+
+.cardItem .itemSection .itemName {
+  font-size: 16px;
+  color: #2a2b3c;
+}
+
+.cardItem .itemSection .itemQuantity {
+  font-size: 16px;
+  color: #2a2b3c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 120px;
+}
+
+.cardItem .itemSection .itemQuantity span {
+  color: rgb(241, 99, 74);
+}
+
+.cardItem .itemSection .itemQuantity .quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 60px;
+}
+
+.cardItem .itemSection .itemQuantity .quantity .itemRemove,
+.cardItem .itemSection .itemQuantity .quantity .itemAdd {
+  color: #faf9fb;
+  font-size: 24px;
+  background: rgb(241, 99, 74);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.cardItem .trashBox {
+  margin-left: 4.5rem;
+}
+
+.cardItem .trashBox .trash {
+  color: rgb(36, 33, 33);
+  cursor: pointer;
+}
+
+.cardItem .itemPrice {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2a2b3c;
+  margin-left: auto;
+}
+
+.cardItem .itemPrice .dolorSign {
+  font-size: 12px;
+  color: rgb(241, 99, 74);
+  margin-right: 0.3rem;
+}
+
+.cardItem .itemPrice .itemPriceValue {
+  font-size: 16px;
+  color: #2a2b3c;
+}
+
+.totalSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  margin: 15px 0px;
+}
+
+.totalSection h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2a2b3c;
+}
+
+.totalSection p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2a2b3c;
+}
+
+.totalSection p span {
+  font-size: 14px;
+  color: rgb(241, 99, 74);
+}
+
+.checkOut {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px 20px;
+  background: rgb(241, 99, 74);
+  border-radius: 100vw;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 650px) {
+  .rowContainer {
+    justify-content: space-between;
+  }
+
+  .inputBox {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .toggleMenu {
+    display: none;
+  }
+  .profileContainer .userName {
+    display: block;
+  }
+
+  .bottomMenu {
+    left: 21%;
+    width: 40%;
+  }
+
+  .mainContainer {
+    width: calc(100% - 350px);
+    padding: 10px 30px;
+  }
+
+  .banner {
+    height: 160px;
+  }
+
+  .deliveryPic {
+    bottom: -13px;
+    width: 278px;
+  }
+
+  .bannerContent h3 {
+    font-size: 24px;
+  }
+
+  .bannerContent p {
+    font-size: 15px;
+    margin: 12px 0;
+    width: unset;
+  }
+
+  .bannerContent a {
+    font-size: 16px;
+  }
+
+  main {
+    display: flex;
+  }
+
+  .rightMenu {
+    position: fixed;
+    z-index: 1;
+    transform: translateX(0);
+    padding: 20px 15px;
+  }
+
+  .itemCard {
+    width: 180px;
+    height: 200px;
+  }
+}
