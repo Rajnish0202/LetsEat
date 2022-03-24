@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AddRounded, Favorite, StarRounded } from "@mui/icons-material";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 function ItemCard({ img, name, ratings, price, id, data }) {
   const [isFavourite, setIsFavourite] = useState(false);
   const [currValue, setCurrValue] = useState(Math.floor(ratings));
 
-  const { cartItems } = useSelector((state) => state.cartReducer);
   const dispatch = useDispatch();
 
   const handleClick = (value) => {

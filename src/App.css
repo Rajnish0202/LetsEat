@@ -770,6 +770,18 @@ main {
   min-width: 320px;
 }
 
+.emptyCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.emptyCart p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
 .cartContainer {
   width: 100%;
   height: 220px;

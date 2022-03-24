@@ -64,7 +64,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getCartTotal());
-  }, [cartItems]);
+  }, [cartItems, dispatch]);
 
   return (
     <div className='App'>
@@ -132,21 +132,27 @@ function App() {
                 <SubMenuContainer name={"Carts Items"} />
                 {/* Cart Item */}
 
-                <div className='cartItems'>
-                  {cartItems.map((item, index) => {
-                    // console.log(item);
-                    return (
-                      <CartItems
-                        key={index}
-                        name={item.name}
-                        image={item.imgSrc}
-                        price={item.price}
-                        qty={item.qty}
-                        item={item}
-                      />
-                    );
-                  })}
-                </div>
+                {cartItems.length === 0 ? (
+                  <div className='emptyCart'>
+                    <p>Your cart is empty...</p>
+                  </div>
+                ) : (
+                  <div className='cartItems'>
+                    {cartItems.map((item, index) => {
+                      // console.log(item);
+                      return (
+                        <CartItems
+                          key={index}
+                          name={item.name}
+                          image={item.imgSrc}
+                          price={item.price}
+                          qty={item.qty}
+                          item={item}
+                        />
+                      );
+                    })}
+                  </div>
+                )}
               </div>
               <div className='totalSection'>
                 <h3>Total</h3>
