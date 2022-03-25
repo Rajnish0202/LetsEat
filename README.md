@@ -1,5 +1,5 @@
 # Project Live Link
-https://leteat.netlify.app/
+https://letseats.netlify.app/
 
 
 
